@@ -13,7 +13,7 @@
           instance_type: t2.micro
           security_group:sg-004e0e3350abf0164
           network:
-            assign_public_ip: true
+             assign_public_ip: true
           image_id: ami-05695932c5299858a
           tags:
             Environment: Testing
