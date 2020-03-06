@@ -1,0 +1,11 @@
+---
+  - name: Test s3
+    hosts: local
+    connection: local
+
+    tasks:
+      - name: Delete a bucket
+        aws_s3:
+          bucket: testme5493
+          mode: delete
+          region: ap-south-1
