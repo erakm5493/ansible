@@ -1,30 +1,20 @@
 ---
-- name: Create a new Demo EC2 instance
-  hosts: local
-  connection: local
-  gather_facts: False
+  - name: Test s3
+    hosts: local
+    connection: local
 
-  vars:
-      region: ap-south-1
-      instance_type: t2.micro
-      ami: ami-f4cc1de2  # Ubuntu 16.04 LTS
-      keypair: redhat # pem file name
-  
-  tasks:
-
-    - name: Create an ec2 instance
-      ec2:
-         key_name: "{{ keypair }}"
-         group: sg-004e0e3350abf0164  # security group name
-         instance_type: "{{ instance_type}}"
-         image: "{{ ami }}"
-         wait: true
-         region: "{{ region }}"
-         count: 1  # default
-         count_tag:
-            Name: test
-         instance_tags:
-            Name: pcfunda
-         vpc_subnet_id: subnet-19e0cc71
-         assign_public_ip: yes
-      register: ec2
+    tasks:
+      - name: Create new bucket
+        ec2-instance:
+          name: testme5493
+          key_name: redhat
+          region: ap-south-1
+          vpc_subnetid: subnet-19e0cc71
+          instance_type: t2.micro
+          security_group:sg-004e0e3350abf0164
+          network:
+            assign_public_ip: true
+          image_id: ami-05695932c5299858a
+          tags:
+            Environment: Testing
+          
