@@ -7,10 +7,10 @@
     # required parameters
     vars:
       instance_type: t2.micro
-      security_group: crunchify_security_grp
-      image: ami-crunchify231di
-      keypair: crunchify
-      region: us-east-2 # Change the Region
+      security_group: sg-004e0e3350abf0164
+      image: ami-05695932c5299858a
+      keypair: redhat
+      region: ap-south-1 # Change the Region
       count: 1
  
     # Task that will be used to Launch/Create an EC2 Instance
